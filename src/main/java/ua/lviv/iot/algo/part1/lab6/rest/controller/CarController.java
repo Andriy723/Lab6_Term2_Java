@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ua.lviv.iot.algo.part1.lab6.business.CarService;
 import ua.lviv.iot.algo.part1.lab6.rest.model.Car;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,20 +26,20 @@ public class CarController {
     private CarService carService;
 
     @GetMapping
-    public List<Car> getCars(){
+    public List<Car> getCars() {
         return new LinkedList<Car>(cars.values());
     }
 
 
     @GetMapping(path = "/{id}")
-    public Car getCar(final @PathVariable("id") Integer carId){
+    public Car getCar(final @PathVariable("id") Integer carId) {
         System.out.println(carId);
 
         return cars.get(carId);
     }
 
     @PostMapping(produces = {MediaType.APPLICATION_JSON_VALUE})
-    public Car createCar(final @RequestBody Car car){
+    public Car createCar(final @RequestBody Car car) {
 
         System.out.println(carService.createCar(car));
 
@@ -56,8 +57,7 @@ public class CarController {
     }
 
     @PutMapping("/{id}")
-    public Car updateCar(final @PathVariable("id") Integer carId,
-                         final @RequestBody Car car){
+    public Car updateCar(final @PathVariable("id") Integer carId, final @RequestBody Car car) {
         car.setId(carId);
         return cars.put(car.getId(), car);
     }

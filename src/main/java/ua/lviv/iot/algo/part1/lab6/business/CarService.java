@@ -10,8 +10,9 @@ public class CarService {
 
     private CarRepository carRepository;
 
-    public Car createCar(Car car){
+    public Car createCar(Car car) {
         return carRepository.save(car);
     }
+
     public int getAvailable = 1;
 }
